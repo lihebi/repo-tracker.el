@@ -1,0 +1,46 @@
+#+TITLE: repo-tracker.el
+
+Do you work on dozens of repos, and have a hard time remembering which
+ones are dirty? You need to track all your repos at a glance.
+
+Screenshot:
+
+[[./screenshot.png]]
+
+
+* Usage
+
+** Installation
+
+Install using [[https://github.com/raxod502/straight.el][straight.el]]:
+
+#+BEGIN_SRC elisp
+(use-package repo-tracker
+  :straight (repo-tracker :type git :host github
+                          :repo "lihebi/repo-tracker.el")
+  :config
+  )
+#+END_SRC
+
+** Configuration
+
+#+BEGIN_SRC elisp
+(setq repo-tracker-repos '("~/git/homepage"
+                           "~/git/note"
+                           "~/git/research"
+                           "~/git/scratch/"
+                           ;; configs
+                           "~/.stumpwm.d"
+                           "~/.emacs.d"
+                           ;; emacs packages
+                           "~/.emacs.d/straight/repos/smart-scholar.el"
+                           "~/.emacs.d/straight/repos/simple-drill.el"
+                           "~/.emacs.d/straight/repos/scribble-mode.el/"
+                           "~/.emacs.d/straight/repos/hn.el/"))
+#+END_SRC
+
+** Running
+
+Run =repo-tracker=. Key bindings:
+
+- =g= (=repo-tracker-refresh=): refresh the status buffer

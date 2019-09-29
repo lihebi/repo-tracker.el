@@ -42,9 +42,13 @@ Dependency: [[https://magit.vc][magit]]
 
 ** Running
 
-Run =repo-tracker=. Key bindings:
+Run =repo-tracker=. Key bindings in the buffer:
 
 - =g= (=repo-tracker-refresh=): refresh the status buffer
+
+Run =repo-tracker-fetch-all= to fetch from upstream, so that you can
+see whether you are behind upstream. This runs synchronously.
+
 
 * TODO-List
 

@@ -75,7 +75,11 @@ This works even if buffer is erased."
   "Run git fetch in REPO."
   (with-temp-buffer
     (cd repo)
-    (magit-git-fetch repo)))
+    ;; FIXME I'm not using async because it does not indicate errors
+    ;; (magit-run-git-async "fetch")
+    (message (format "repo-tracker: fetching %s .." repo))
+    (when (magit-git-failure "fetch")
+      (message (format "repo-tracker: fetch %s failed" repo)))))
 
 (defun repo-tracker-fetch-all ()
   "Fetch all repos from upstream."

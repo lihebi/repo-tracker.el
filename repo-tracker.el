@@ -89,10 +89,8 @@ This works even if buffer is erased."
      (dolist (repo repo-tracker-repos)
        (insert (propertize repo 'face 'font-lock-constant-face))
        (insert "\n")
-       (insert (repo-tracker-colorize (string-join (get-status repo) "\n")))
+       (insert (repo-tracker-colorize (string-join (repo-tracker--git-status repo) "\n")))
        (insert "\n")))))
-
-;; (get-status "~/.hebi")
 
 (provide 'repo-tracker)
 

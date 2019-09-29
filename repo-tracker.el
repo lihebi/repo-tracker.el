@@ -90,7 +90,7 @@ This works even if buffer is erased."
              reg (lambda (s)
                    (propertize s 'face 'font-lock-keyword-face))
              acc t))
-          '("modified" "untracked")
+          '("modified" "untracked" "ahead of")
           :initial-value str))
 
 (defun repo-tracker ()

@@ -45,7 +45,7 @@ Run =repo-tracker=. Key bindings:
 
 - =g= (=repo-tracker-refresh=): refresh the status buffer
 
-* TODO list
+* TODO-List
 
 ** TODO high light different things differently
 ** TODO catch other types of dirtyness

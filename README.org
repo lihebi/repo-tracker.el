@@ -18,9 +18,10 @@ Install using [[https://github.com/raxod502/straight.el][straight.el]]:
 (use-package repo-tracker
   :straight (repo-tracker :type git :host github
                           :repo "lihebi/repo-tracker.el")
-  :config
-  )
+  :requires magit)
 #+END_SRC
+
+Dependency: [[https://magit.vc][magit]]
 
 ** Configuration
 

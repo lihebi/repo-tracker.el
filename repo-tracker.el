@@ -20,8 +20,20 @@
 (defun repo-tracker-refresh ()
   "Refresh repo-tracker buffer."
   (interactive)
-  (repo-tracker--hard-save-excursion
-   (repo-tracker)))
+  ;; FIXME this macro is not working. Well, it does not work on
+  ;; startup, i.e. the point still goes to the beginning after
+  ;; refresh. I have to manually re-evaluate this function to make it
+  ;; work properly. That is weird.
+
+  ;; (repo-tracker--hard-save-excursion
+  ;;  (repo-tracker))
+  (let ((pos (point))
+        (winpos (window-start)))
+
+    (repo-tracker)
+
+    (set-window-start (selected-window) winpos)
+    (goto-char pos)))
 
 (define-derived-mode repo-tracker-mode special-mode "repo-tracker"
   :group 'repo-tracker
@@ -47,11 +59,11 @@
   "Save excursion and run BODY.
 
 This works even if buffer is erased."
-  (let ((pos (point))
-        (winpos (window-start)))
-    body
-    (set-window-start (selected-window) winpos)
-    (goto-char pos)))
+  `(let ((pos (point))
+         (winpos (window-start)))
+     ,body
+     (set-window-start (selected-window) winpos)
+     (goto-char pos)))
 
 (defun repo-tracker--git-status (repo)
   "Run git status in REPO and return output strings as a list."

@@ -89,9 +89,6 @@ This works even if buffer is erased."
      (dolist (repo repo-tracker-repos)
        (insert (propertize repo 'face 'font-lock-constant-face))
        (insert "\n")
-       ;; TODO high light different things differently
-       ;; FIXME catch other types of dirtyness
-       ;; TODO show only important messages
        (insert (repo-tracker-colorize (string-join (get-status repo) "\n")))
        (insert "\n")))))
 

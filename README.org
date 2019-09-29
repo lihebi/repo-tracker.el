@@ -44,3 +44,12 @@ Install using [[https://github.com/raxod502/straight.el][straight.el]]:
 Run =repo-tracker=. Key bindings:
 
 - =g= (=repo-tracker-refresh=): refresh the status buffer
+
+* TODO list
+
+** TODO high light different things differently
+** TODO catch other types of dirtyness
+** TODO show only important messages
+
+This package is alpha now, so I need full message to catch all
+dirtyness.  I'm delaying this until the package becomes mature.

@@ -36,7 +36,8 @@
         (erase-buffer)
         (funcall proc))
       (repo-tracker-mode)
-      (set-buffer-modified-p nil))
+      (set-buffer-modified-p nil)
+      (goto-line (point-min)))
     ;; seems that I don't need to define a new mode, just use
     ;; local-set-key for key bindings
     ;; (local-set-key "q" 'scribble-quit-buffer-display)

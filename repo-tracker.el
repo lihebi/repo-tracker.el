@@ -97,6 +97,7 @@ This works even if buffer is erased."
           '("modified" "untracked" "ahead of")
           :initial-value str))
 
+;;;###autoload
 (defun repo-tracker ()
   "Show repo status."
   (interactive)

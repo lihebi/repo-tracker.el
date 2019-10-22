@@ -97,7 +97,7 @@ This works even if buffer is erased."
              reg (lambda (s)
                    (propertize s 'face 'font-lock-keyword-face))
              acc t))
-          '("modified" "untracked" "ahead of")
+          '("modified" "untracked" "ahead of" "behind")
           :initial-value str))
 
 ;;;###autoload

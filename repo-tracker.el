@@ -68,18 +68,21 @@ This works even if buffer is erased."
 (defun repo-tracker--git-status (repo)
   "Run git status in REPO and return output strings as a list."
   (with-temp-buffer
-    (cd repo)
-    (magit-git-lines "status")))
+    (if (file-directory-p repo)
+        (progn (cd repo)
+               (magit-git-lines "status"))
+      '("Not exists."))))
 
 (defun repo-tracker--git-fetch (repo)
   "Run git fetch in REPO."
   (with-temp-buffer
-    (cd repo)
-    ;; FIXME I'm not using async because it does not indicate errors
-    ;; (magit-run-git-async "fetch")
-    (message (format "repo-tracker: fetching %s .." repo))
-    (when (magit-git-failure "fetch")
-      (message (format "repo-tracker: fetch %s failed" repo)))))
+    (when (file-directory-p repo)
+      (cd repo)
+      ;; FIXME I'm not using async because it does not indicate errors
+      ;; (magit-run-git-async "fetch")
+      (message (format "repo-tracker: fetching %s .." repo))
+      (when (magit-git-failure "fetch")
+        (message (format "repo-tracker: fetch %s failed" repo))))))
 
 (defun repo-tracker-fetch-all ()
   "Fetch all repos from upstream."
